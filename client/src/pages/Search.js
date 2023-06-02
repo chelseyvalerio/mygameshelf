@@ -30,7 +30,7 @@ const SearchBar = () => {
           fuzzy_match: true,
           categories: categories.join(','),
           'min-players': minPlayers,
-          client_id: 'UryLwF1wvO'
+          client_id: 'UryLwF1wvO' // move this ID to the backend 
         },
         headers: {
            // Replace with your Board Game Atlas client ID
