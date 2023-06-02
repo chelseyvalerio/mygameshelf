@@ -1,129 +1,74 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Games} = require('../models');
 
 db.once('open', async () => {
-  await Category.deleteMany();
+  // await Category.deleteMany();
 
-  const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' }
-  ]);
+  // const categories = await Category.insertMany([
+  //   { name: 'Food' },
+  //   { name: 'Household Supplies' },
+  //   { name: 'Electronics' },
+  //   { name: 'Books' },
+  //   { name: 'Toys' }
+  // ]);
 
   console.log('categories seeded');
 
-  await Product.deleteMany();
+  await Games.deleteMany();
 
-  const products = await Product.insertMany([
+  const games = await Games.insertMany([
     {
-      name: 'Tin of Cookies',
-      description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
-      category: categories[0]._id,
-      price: 2.99,
-      quantity: 500
+      id: "TAAifFP590",
+      name: "The Settlers of Catan",
+      year_published: 1995,
+      min_players: 3,
+      max_players: 4,
+      playing_time: 60,
+      description: "The Settlers of Catan is a board game for 3 to 4 players. Players take on the role of settlers on the island of Catan, where they must build roads, settlements, and cities in order to score points. The game is won by the player who scores the most points at the end of the game.",
+      mechanics: [
+        "Set Collection",
+        "Trading",
+        "Area Control"
+      ],
+      designers: [
+        "Klaus Teuber"
+      ],
+      publishers: [
+        "Mayfair Games"
+      ],
+      artists: [
+        "Michael Menzel"
+      ],
+      rating: 7.8,
+      image_url: "https://boardgamegeek.com/image/1330256/the-settlers-catan",
+      thumbnail_url: "https://boardgamegeek.com/image/1330255/the-settlers-catan"
     },
     {
-      name: 'Canned Coffee',
-      description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
-      category: categories[0]._id,
-      price: 1.99,
-      quantity: 500
-    },
-    {
-      name: 'Toilet Paper',
-      category: categories[1]._id,
-      description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
-      price: 7.99,
-      quantity: 20
-    },
-    {
-      name: 'Handmade Soap',
-      category: categories[1]._id,
-      description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-      image: 'soap.jpg',
-      price: 3.99,
-      quantity: 50
-    },
-    {
-      name: 'Set of Wooden Spoons',
-      category: categories[1]._id,
-      description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-      image: 'wooden-spoons.jpg',
-      price: 14.99,
-      quantity: 100
-    },
-    {
-      name: 'Camera',
-      category: categories[2]._id,
-      description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-      image: 'camera.jpg',
-      price: 399.99,
-      quantity: 30
-    },
-    {
-      name: 'Tablet',
-      category: categories[2]._id,
-      description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-      image: 'tablet.jpg',
-      price: 199.99,
-      quantity: 30
-    },
-    {
-      name: 'Tales at Bedtime',
-      category: categories[3]._id,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
-      price: 9.99,
-      quantity: 100
-    },
-    {
-      name: 'Spinning Top',
-      category: categories[4]._id,
-      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000
-    },
-    {
-      name: 'Set of Plastic Horses',
-      category: categories[4]._id,
-      description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000
-    },
-    {
-      name: 'Teddy Bear',
-      category: categories[4]._id,
-      description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
-      price: 7.99,
-      quantity: 100
-    },
-    {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
-      description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
-      price: 9.99,
-      quantity: 600
-    }
+      id: "35396",
+      name: "Pandemic",
+      year_published: 2008,
+      min_players: 2,
+      max_players: 4,
+      playing_time: 60-120,
+      description: "Pandemic is a cooperative board game for 2 to 4 players. Players work together to cure four diseases that are spreading across the world. Players must travel the world, collect resources, and build research stations in order to find a cure. If any of the diseases overwhelm the world, the players lose.",
+      mechanics: [
+        "Cooperative",
+        "Hand Management",
+        "Set Collection"
+      ],
+      designers: [
+        "Matt Leacock"
+      ],
+      publishers: [
+        "Z-Man Games"
+      ],
+      artists: [
+        "Vincent Dutrait"
+      ],
+      rating: 8.1,
+      image_url: "https://boardgamegeek.com/image/133218/pandemic",
+      thumbnail_url: "https://boardgamegeek.com/image/133217/pandemic"
+     }
   ]);
 
   console.log('products seeded');
@@ -135,11 +80,11 @@ db.once('open', async () => {
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
-    ]
+    // games: [
+    //   {
+    //     games: [products[0]._id, products[0]._id, products[1]._id]
+    //   }
+    // ]
   });
 
   await User.create({
