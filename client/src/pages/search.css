@@ -2,7 +2,7 @@ form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 2em auto;
 }
 label {
     font-weight: bold !important;
@@ -12,7 +12,8 @@ label {
 
 input,
 textarea {
-    width: 350px;
+    /* width: 350px; */
+    width: auto;
     padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -32,4 +33,17 @@ button {
 
 button:hover {
     background-color: #44a788;
+}
+.searchLi {
+    /* width: 50%; */
+}
+.searchHeader {
+    color: #4e4d48;
+    text-shadow: 1px 1px 0.5px #eee;
+    font-size: 2em;
+    margin-top: 2em 0 0;
+}
+.searchImg {
+    max-width: 300px;
+    margin: 0 2em 2em 0;
 }
