@@ -10,6 +10,7 @@ const db = require('./config/connection');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 
+// variables for boardgame atlas 
 const YOUR_CLIENT_ID = process.env.YOUR_CLIENT_ID;
 const YOUR_CLIENT_SECRET = process.env.YOUR_CLIENT_SECRET;
 const YOUR_REDIRECT_URI = process.env.YOUR_REDIRECT_URI;
