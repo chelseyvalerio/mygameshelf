@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavTabs from './NavTabs';
 import Shelf from '../pages/GameShelf';
 import SearchBar from '../pages/Search';
+import Login from '../pages/Login';
 import Footer from './Footer';
 
 export default function GameContainer() {
@@ -12,8 +13,11 @@ export default function GameContainer() {
     if (currentPage === 'gameShelf') {
       return <Shelf />;
     }
-    if (currentPage === 'Search') {
+    else if (currentPage === 'Search') {
       return <SearchBar />;
+    }
+    else if (currentPage === 'Login') {
+      return <Login />;
     }
   };
 

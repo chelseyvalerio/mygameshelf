@@ -29,12 +29,14 @@ const SearchBar = () => {
           name: searchTerm,
           fuzzy_match: true,
           categories: categories.join(','),
-          'min-players': minPlayers
+          'min-players': minPlayers,
+          client_id: 'UryLwF1wvO'
         },
         headers: {
-          'Client-ID': 'YOUR_CLIENT_ID', // Replace with your Board Game Atlas client ID
+           // Replace with your Board Game Atlas client ID
         },
       });
+      console.log(response);
 
       setSearchResults(response.data.games);
     } catch (error) {
