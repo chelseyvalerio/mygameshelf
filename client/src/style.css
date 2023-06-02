@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d5958;
+    color: #004445;
+}
+
+/*Added display: flex, align center, and spacing to keep nav links inside the header when screen shrinks*/
+.header {
+    padding: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, Arial, sans-serif;
+    background-color: #f8b400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    display: inline-block;
+    font-size: vw;
+}
+
+h3 {
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+/*Created container for biopic to be able to align in center*/
+.bio-pic-container {
+    text-align: center;
+    margin: 30px;
+}
+
+/* Assigend the class correctly to the img*/
+.bio-pic {
+    width: 100%;
+    max-width: 500px;
+    /* border-radius: 50%; */
+}
+
+/*removed padding*/
+.quick-links {
+    margin-right: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color:#0e1017 !important;
+}
+
+.quick-links ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+.quick-links ul li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.nav-link {
+color:#0e1017 !important;
+}
+
+/*Added a max width*/
+.my-info {
+    padding: 10px;
+    flex: auto;
+    border-style: solid;
+    border-color: #004445;
+    border-width: 1.5px;
+    margin: 10px auto;
+   border-radius: 25px;
+    max-width: 1000px;
+}
+
+/*Created max width as well as set margin to center cards. Removed flex to fix screen issues*/
+.all-game-cards {
+    padding: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.game-card {
+    padding: 10px;
+    height: 275px;
+    border-color: #004445;
+    border-width: 1.5px;
+    margin: 10px;
+    border-radius: 25px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+/* Created a sub class to make grid for remaing project cards. repeat(# of items in colomun, 1fr lets it fill entire space in colomun allowed)*/
+.sub-project-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/*Remove padding and Margin */
+.contact-quick-links {
+    list-style-type: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+.footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8b400;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .content {
+    padding-bottom: 15px;
+  }
+
+  .icon {
+    font-size: 50px !important;
+    margin-top: 15px;
+    padding: 5px;
+  }
+
+/* Keep sthe Nav links in header and centers them at smaller sizes*/
+@media screen and (max-width: 750px) {
+    .header {
+        display: block;
+        text-align: center;
+    }
+
+    .quick-links ul {
+        padding: 0;
+    }
+}
+
+/*Fixes sizing of cards at smaller screen size to adjust to 1 in a column*/
+@media screen and (max-width: 525px) {
+   .sub-project-cards {
+    grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+/* Color scheme colors
+Header footer colors
+.first-color { 
+	background: #f8b400; 
+
+For website background
+.second-color { 
+	background: #faf5e4; 
+
+use for box backgrounds if needed or border
+.third-color { 
+	background: #2c786c; 
+}
+ use for font
+.fourth-color { 
+	background: #004445; 
+}
+*/

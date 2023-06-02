@@ -1,0 +1,35 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+label {
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+input,
+textarea {
+    width: 350px;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #167f5f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #44a788;
+}
