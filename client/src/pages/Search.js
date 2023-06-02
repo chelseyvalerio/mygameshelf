@@ -52,22 +52,29 @@ const SearchBar = () => {
 
   return (
     <div>
+      <form>
       <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Search term" />
+      <label for="categories">Search by Category:</label>
       <select multiple value={categories} onChange={handleCategoryChange}>
         <option value="strategy">Strategy</option>
         <option value="party">Party</option>
         <option value="cooperative">Cooperative</option>
+        <option value="dice">Dice</option>
         {/* Add more categories as needed */}
       </select>
       <input type="number" value={minPlayers} onChange={handleMinPlayersChange} placeholder="Min Players" />
       <button onClick={handleSearch}>Search</button>
+      </form>
 
       {searchResults.length > 0 && (
         <div>
           <ul>
             {searchResults.map((game) => (
-              <li key={game.id}>
-                {game.name}
+              <li className='searchLi' key={game.id}>
+                <h4 className="searchHeader">{game.name}</h4><br/>
+                <p>Players: {game.players}</p><br/>
+                {/* game.description_preview */}
+                <img className="searchImg" src={game.image_url} alt={game.name} />
                 <button onClick={() => setSelectedGame(game)}>Add to Shelf</button>
               </li>
             ))}
