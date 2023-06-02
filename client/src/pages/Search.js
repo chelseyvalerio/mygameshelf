@@ -24,16 +24,13 @@ const SearchBar = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get('https://api.boardgameatlas.com/api/search', {
+      const response = await axios.get('/api/search', {
         params: {
           name: searchTerm,
           fuzzy_match: true,
           categories: categories.join(','),
           'min-players': minPlayers
-        },
-        headers: {
-          'Client-ID': 'YOUR_CLIENT_ID', // Replace with your Board Game Atlas client ID
-        },
+        }
       });
 
       setSearchResults(response.data.games);

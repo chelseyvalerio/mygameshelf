@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+const axios = require('axios');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -26,6 +27,22 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+app.get('/api/search', async (req, res) => {
+  try {
+    const response = await axios.get('https://api.boardgameatlas.com/api/search', {
+      params: req.query,
+      headers: {
+        'Client-ID': 'UryLwF1wvO', // Replace with your Board Game Atlas client ID
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error occurred during search:', error);
+    res.status(500).json({ error: 'An error occurred during search' });
+  }
 });
 
 
