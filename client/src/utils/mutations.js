@@ -23,6 +23,18 @@ export const ADD_GAME = gql`
   }
 `;
 
+export const REMOVE_GAME = gql`
+  mutation removeGame($game: [ID]!) {
+    removeOrder(products: $products) {
+      products {
+        _id
+        name
+        description
+      }
+    }
+  }
+`;
+
 export const ADD_USER = gql`
   mutation addUser(
     $email: String!
