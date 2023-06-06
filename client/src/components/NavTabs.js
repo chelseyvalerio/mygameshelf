@@ -14,7 +14,7 @@ function NavTabs({ currentPage, handlePageChange }) {
         <ul className="nav quick-links header">
           <li className="nav-item">
             {/* <Link to="/" onClick={() => Auth.logout()}>Logout</Link> */}
-            <Link to="/" onClick={() => handlePageChange('gameShelf')}>Logout</Link>
+            <Link to="/search" onClick={() => handlePageChange('gameShelf')}>Logout</Link>
           </li>
         </ul>
       )
@@ -53,7 +53,7 @@ function NavTabs({ currentPage, handlePageChange }) {
           >
             Search
           </Link>
-          
+
           {showNavigation()}
         </li>
       </ul>

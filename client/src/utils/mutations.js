@@ -11,19 +11,13 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
+export const ADD_GAME = gql`
+  mutation addGame($game: [ID]!) {
     addOrder(products: $products) {
-      purchaseDate
       products {
         _id
         name
         description
-        price
-        quantity
-        category {
-          name
-        }
       }
     }
   }
@@ -31,14 +25,10 @@ export const ADD_ORDER = gql`
 
 export const ADD_USER = gql`
   mutation addUser(
-    $firstName: String!
-    $lastName: String!
     $email: String!
     $password: String!
   ) {
     addUser(
-      firstName: $firstName
-      lastName: $lastName
       email: $email
       password: $password
     ) {
