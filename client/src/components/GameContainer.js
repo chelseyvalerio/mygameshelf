@@ -7,6 +7,13 @@ import Login from '../pages/Login';
 import Footer from './Footer';
 import Auth from '../utils/auth';
 import axios from 'axios';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 
 export default function GameContainer() {
@@ -42,8 +49,31 @@ export default function GameContainer() {
     // Set the loggedIn state to false
     setLoggedIn(false);
   };
+  
+   // Create an HTTP link to your GraphQL API
+   const httpLink = createHttpLink({
+    uri: '/graphql',
+  });
+
+  // Create an auth link to include the JWT token in the request headers
+  const authLink = setContext((_, { headers }) => {
+    const token = Auth.getToken();
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
+
+  // Create the Apollo Client instance
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
 
   return (
+    <ApolloProvider client={client}>
     <Router>
       <div>
         <header>
@@ -57,5 +87,6 @@ export default function GameContainer() {
         <Footer />
       </div>
     </Router>
+    </ApolloProvider>
   );
 }
