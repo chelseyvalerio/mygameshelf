@@ -49,7 +49,7 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
         <li className="nav-item">
           <Link
             to="/"
-            onClick={handlePageChange('home')}
+            onClick={() => handlePageChange('home')}
             className='nav-link'
           >Home
           </Link>

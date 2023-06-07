@@ -18,7 +18,7 @@ import { setContext } from '@apollo/client/link/context';
 
 
 export default function GameContainer() {
-  const [currentPage, setCurrentPage] = useState('gameShelf');
+  const [currentPage, setCurrentPage] = useState();
 
   // useState for login/logout
   const [loggedIn, setLoggedIn] = useState(false);

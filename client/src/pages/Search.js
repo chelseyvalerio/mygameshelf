@@ -22,7 +22,9 @@ const SearchBar = () => {
     setMinPlayers(event.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    console.log("try");
     try {
       const response = await axios.get('https://api.boardgameatlas.com/api/search', {
         params: {
