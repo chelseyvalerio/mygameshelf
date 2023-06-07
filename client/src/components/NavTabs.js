@@ -12,25 +12,25 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
     if (Auth.loggedIn()) {
       return (
         <ul>
-        <li className="nav-item">
-          <Link
-            to="/gameShelf"
-            onClick={() => handlePageChange('gameShelf')}
-            className={currentPage === 'gameShelf' ? 'nav-link active' : 'nav-link'}
-          >
-            Game Shelf
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/gameShelf"
-            className='nav-link'
-            onClick={() => {
-              handlePageChange('gameShelf')
-              handleLogout()
-            }}>Logout
-          </Link>
-        </li>
+          <li className="nav-item">
+            <Link
+              to="/gameShelf"
+              onClick={() => handlePageChange('gameShelf')}
+              className={currentPage === 'gameShelf' ? 'nav-link active' : 'nav-link'}
+            >
+              Game Shelf
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/gameShelf"
+              className='nav-link'
+              onClick={() => {
+                handlePageChange('gameShelf')
+                handleLogout()
+              }}>Logout
+            </Link>
+          </li>
         </ul>
       )
     }
@@ -45,13 +45,21 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
   return (
     <div>
       <ul className="nav quick-links header">
-        
+
         <li className="nav-item">
+          <Link
+            to="/"
+            onClick={handlePageChange('home')}
+            className='nav-link'
+          >Home
+          </Link>
+        </li>
+        <li>
           <Link
             to="/search"
             onClick={() => handlePageChange('search')}
-            // Check to see if the currentPage is `Blog`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
             className={currentPage === 'Search' ? 'nav-link active' : 'nav-link'}
+
           >
             Search
           </Link>

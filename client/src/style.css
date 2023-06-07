@@ -52,6 +52,7 @@ h3 {
 .quick-links ul {
     list-style-type: none;
     margin: 0;
+    padding-left: 0;
 }
 
 .quick-links ul li {
