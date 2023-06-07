@@ -53,6 +53,7 @@ const SearchBar = () => {
   return (
     <div>
       <form>
+        <label>Search board games:</label>
       <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Search term" />
       <label for="categories">Search by Category:</label>
       <select multiple value={categories} onChange={handleCategoryChange}>

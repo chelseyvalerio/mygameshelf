@@ -77,7 +77,11 @@ export default function GameContainer() {
     <Router>
       <div>
         <header>
-          <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
+          <NavTabs 
+            currentPage={currentPage} 
+            handlePageChange={handlePageChange}  
+            loggedIn={loggedIn}
+            handleLogout={handleLogout} />
         </header>
         <Routes>
           <Route path='/gameShelf' element={<Shelf />} />

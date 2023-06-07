@@ -4,29 +4,30 @@ import Auth from "../utils/auth";
 
 // Here we are using object destructuring assignment to pluck off our variables from the props object
 // We assign them to their own variable names
-function NavTabs({ currentPage, handlePageChange }) {
+function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
 
   // if logged in, show logout link 
   function showNavigation() {
 
     if (Auth.loggedIn()) {
       return (
-        <ul className="nav quick-links header">
-          <li className="nav-item">
-            {/* <Link to="/" onClick={() => Auth.logout()}>Logout</Link> */}
-            <Link to="/search" onClick={() => handlePageChange('gameShelf')}>Logout</Link>
-          </li>
-        </ul>
+        <li className="nav-item">
+          <Link
+            to="/gameShelf"
+            className='nav-link'
+            onClick={() => {
+              handlePageChange('gameShelf')
+              handleLogout()
+            }}>Logout
+          </Link>
+        </li>
       )
     }
-    else {
+    else { // if (Auth.loggedOut()) {
       return (
-        <ul className="nav quick-links header">
-          <li className="nav-item">
-            {/*<a href="/login" onClick={() => Auth.logout()}>Login/Signup</a>*/}
-            <Link to="/login" onClick={() => handlePageChange('login')}>Login/Signup</Link>
-          </li>
-        </ul>
+        <li className="nav-item">
+          <Link to="/login" className='nav-link' onClick={() => handlePageChange('login')}>Login/Signup</Link>
+        </li>
       );
     }
   }
@@ -53,9 +54,8 @@ function NavTabs({ currentPage, handlePageChange }) {
           >
             Search
           </Link>
-
-          {showNavigation()}
         </li>
+        {showNavigation()}
       </ul>
 
     </div>
