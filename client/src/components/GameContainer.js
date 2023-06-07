@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
 import NavTabs from './NavTabs';
 import Shelf from '../pages/GameShelf';
 import SearchBar from '../pages/Search';
@@ -84,6 +85,7 @@ export default function GameContainer() {
             handleLogout={handleLogout} />
         </header>
         <Routes>
+        <Route path='/' element={<Home />} />
           <Route path='/gameShelf' element={<Shelf />} />
           <Route path='/search' element={<SearchBar />} />
           <Route path='/login' element={<Login />} />

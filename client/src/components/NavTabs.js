@@ -11,6 +11,16 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
 
     if (Auth.loggedIn()) {
       return (
+        <ul>
+        <li className="nav-item">
+          <Link
+            to="/gameShelf"
+            onClick={() => handlePageChange('gameShelf')}
+            className={currentPage === 'gameShelf' ? 'nav-link active' : 'nav-link'}
+          >
+            Game Shelf
+          </Link>
+        </li>
         <li className="nav-item">
           <Link
             to="/gameShelf"
@@ -21,6 +31,7 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
             }}>Logout
           </Link>
         </li>
+        </ul>
       )
     }
     else { // if (Auth.loggedOut()) {
@@ -34,17 +45,7 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
   return (
     <div>
       <ul className="nav quick-links header">
-        <li className="nav-item">
-          <Link
-            to="/gameShelf"
-            onClick={() => handlePageChange('gameShelf')}
-            // This is a conditional (ternary) operator that checks to see if the current page is "Home"
-            // If it is, we set the current page to 'nav-link-active', otherwise we set it to 'nav-link'
-            className={currentPage === 'gameShelf' ? 'nav-link active' : 'nav-link'}
-          >
-            Game Shelf
-          </Link>
-        </li>
+        
         <li className="nav-item">
           <Link
             to="/search"
