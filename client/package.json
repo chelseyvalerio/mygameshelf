@@ -16,6 +16,9 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1"
   },
+  "devDependencies": {
+    "webpack-pwa-manifest": "^4.3.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
