@@ -45,9 +45,8 @@ function Login(props) {
 
   return (
     <div className="container my-1">
-      
       <h2>Login/SignUp</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="login">
         <div className="flex-row space-between my-2">
           <h4>Login</h4>
           <label htmlFor="email">Email address:</label>
@@ -79,7 +78,7 @@ function Login(props) {
         </div>
       </form>
      
-      <form onSubmit={addUserSubmit}>
+      <form onSubmit={addUserSubmit} className="login">
         <div className="flex-row space-between my-2">
         <h4>Signup</h4>
           <label htmlFor="email">Email address:</label>
@@ -103,7 +102,7 @@ function Login(props) {
         </div>
         {newError ? (
           <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+            <p className="error-text">Please use a unique email address.</p>
           </div>
         ) : null}
         <div className="flex-row flex-end">
