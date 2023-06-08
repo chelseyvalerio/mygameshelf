@@ -5,16 +5,6 @@ const bcrypt = require('bcrypt');
 const Games = require('./Games');
 
 const userSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
   email: {
     type: String,
     required: true,
@@ -25,7 +15,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  games: [Games.schema]
+  games: [{
+    type: Schema.Types.ObjectId, 
+    ref: "Games"
+  }]
 });
 
 // set up pre-save middleware to create password

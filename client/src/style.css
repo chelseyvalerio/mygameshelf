@@ -14,7 +14,7 @@ body {
     background-color: #f8b400;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 h1 {
@@ -52,6 +52,7 @@ h3 {
 .quick-links ul {
     list-style-type: none;
     margin: 0;
+    padding-left: 0;
 }
 
 .quick-links ul li {
@@ -59,8 +60,9 @@ h3 {
     margin: 5px;
 }
 
-.nav-link {
-color:#0e1017 !important;
+.nav-link:hover {
+    text-decoration: underline;
+/* color:#0e1017 !important; */
 }
 
 /*Added a max width*/

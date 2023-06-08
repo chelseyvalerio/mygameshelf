@@ -2,10 +2,18 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
-const axios = require('axios');
+require ('dotenv').config();
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+
+const axios = require('axios');
+const bodyParser = require('body-parser');
+
+// variables for boardgame atlas 
+const YOUR_CLIENT_ID = process.env.YOUR_CLIENT_ID;
+const YOUR_CLIENT_SECRET = process.env.YOUR_CLIENT_SECRET;
+const YOUR_REDIRECT_URI = process.env.YOUR_REDIRECT_URI;
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,6 +23,7 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -29,22 +38,40 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.get('/api/search', async (req, res) => {
-  try {
-    const response = await axios.get('https://api.boardgameatlas.com/api/search', {
-      params: req.query,
-      headers: {
-        'Client-ID': 'UryLwF1wvO', // Replace with your Board Game Atlas client ID
-      },
-    });
-
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error occurred during search:', error);
-    res.status(500).json({ error: 'An error occurred during search' });
-  }
+// Serve the login page
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/login.html');
 });
 
+// Handle the authorization callback
+app.get('/auth/callback', async (req, res) => {
+  const authCode = req.query.code;
+
+  try {
+    // Exchange authorization code for access token
+    const tokenResponse = await axios.post('https://api.boardgameatlas.com/oauth/token', null, {
+      params: {
+        client_id: YOUR_CLIENT_ID,
+        client_secret: YOUR_CLIENT_SECRET,
+        code: authCode,
+        redirect_uri: YOUR_REDIRECT_URI,
+        grant_type: 'authorization_code'
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+
+    const accessToken = tokenResponse.data.access_token;
+    const refreshToken = tokenResponse.data.refresh_token;
+
+    // Render a success page with the obtained access token
+    res.send(`<h1>Login Successful!</h1><p>Access Token: ${accessToken}</p>`);
+  } catch (error) {
+    // Render an error page if something goes wrong
+    res.send(`<h1>Error: ${error.message}</h1>`);
+  }
+});
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
