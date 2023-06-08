@@ -1,12 +1,11 @@
-import React from "react";
-import { selectedGame } from './Search';
-import { addGame } from "./Search";
+import React, { useState} from "react";
+// import { selectedGame } from './Search';
+// import { addGame } from "./Search";
 // import { useMutation } from "@apollo/client";
 // import { ADD_GAME } from "../utils/mutations";
 
-export default function gameShelf() {
-
- 
+export default function GameShelf() {
+  const [selectedGame] = useState(null);
 
   return (
     <div>
