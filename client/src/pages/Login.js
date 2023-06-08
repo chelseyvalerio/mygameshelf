@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
+import { LOGIN, ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser, { newError }] = useMutation(ADD_USER);
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
@@ -15,6 +16,19 @@ function Login(props) {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const addUserSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await addUser({
+        variables: { email: formState.newEmail, password: formState.newPassword },
+      });
+      const token = mutationResponse.data.addUser.token;
       Auth.login(token);
     } catch (e) {
       console.log(e);
@@ -31,11 +45,10 @@ function Login(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
+      <h2>Login/SignUp</h2>
+      <form onSubmit={handleFormSubmit} className="login">
         <div className="flex-row space-between my-2">
+          <h4>Login</h4>
           <label htmlFor="email">Email address:</label>
           <input
             placeholder="youremail@test.com"
@@ -64,7 +77,40 @@ function Login(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
-    </div>
+     
+      <form onSubmit={addUserSubmit} className="login">
+        <div className="flex-row space-between my-2">
+        <h4>Signup</h4>
+          <label htmlFor="email">Email address:</label>
+          <input
+            placeholder="youremail@test.com"
+            name="newEmail"
+            type="email"
+            id="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="pwd">Password:</label>
+          <input
+            placeholder="******"
+            name="newPassword"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+          />
+        </div>
+        {newError ? (
+          <div>
+            <p className="error-text">Please use a unique email address.</p>
+          </div>
+        ) : null}
+        <div className="flex-row flex-end">
+          <button type="addUser">SignUp</button>
+        </div>
+      </form>
+      
+      </div>
   );
 }
 
