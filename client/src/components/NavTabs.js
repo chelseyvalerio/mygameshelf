@@ -21,6 +21,15 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
               Game Shelf
             </Link>
           </li>
+          <li>
+          <Link
+            to="/search"
+            onClick={() => handlePageChange('search')}
+            className={currentPage === 'Search' ? 'nav-link active' : 'nav-link'}
+          >
+            Search
+          </Link>
+        </li>
           <li className="nav-item">
             <Link
               to="/gameShelf"
@@ -52,16 +61,6 @@ function NavTabs({ currentPage, handlePageChange, loggedIn, handleLogout }) {
             onClick={() => handlePageChange('home')}
             className='nav-link'
           >Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/search"
-            onClick={() => handlePageChange('search')}
-            className={currentPage === 'Search' ? 'nav-link active' : 'nav-link'}
-
-          >
-            Search
           </Link>
         </li>
         {showNavigation()}
