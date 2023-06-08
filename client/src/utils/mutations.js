@@ -14,7 +14,11 @@ export const LOGIN = gql`
 export const ADD_GAME = gql`
 mutation addGame($games: String!) {
   addGame(games: $games) {
-    games
+    games{
+      _id
+        name
+        image_url
+    }
   }
 }
 `;
