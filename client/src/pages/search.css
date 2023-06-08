@@ -2,7 +2,11 @@ form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin: 2em auto;
+    margin: 4em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 2em;
+    box-shadow: 0.5px 0.5px 2px #ddd;
 }
 label {
     font-weight: bold !important;
@@ -46,4 +50,8 @@ button:hover {
 .searchImg {
     max-width: 300px;
     margin: 0 2em 2em 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
 }
