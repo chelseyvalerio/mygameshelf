@@ -1,6 +1,8 @@
 import './search.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useMutation } from '@apollo/client';
+import { ADD_GAME } from "../utils/mutations";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -8,6 +10,7 @@ const SearchBar = () => {
   const [minPlayers, setMinPlayers] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [addGame, { error }] = useMutation(ADD_GAME);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -46,9 +49,18 @@ const SearchBar = () => {
     }
   };
 
-  const handleAddToShelf = () => {
+  const handleAddToShelf = async () => {
     // Add selected game to the boardGameShelf.js component
     console.log('Selected game:', selectedGame);
+    try {
+      const mutationResponse = await addGame({
+        //variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      // Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
     // Implement your logic to add the game to the shelf here
   };
   

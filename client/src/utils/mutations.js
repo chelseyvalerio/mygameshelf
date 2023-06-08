@@ -12,15 +12,11 @@ export const LOGIN = gql`
 `;
 
 export const ADD_GAME = gql`
-  mutation addGame($game: [ID]!) {
-    addOrder(products: $products) {
-      products {
-        _id
-        name
-        description
-      }
-    }
+mutation addGame($games: String!) {
+  addGame(games: $games) {
+    games
   }
+}
 `;
 
 export const REMOVE_GAME = gql`

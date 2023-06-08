@@ -1,7 +1,13 @@
 import React from "react";
 import { selectedGame } from './Search';
+import { addGame } from "./Search";
+// import { useMutation } from "@apollo/client";
+// import { ADD_GAME } from "../utils/mutations";
 
 export default function gameShelf() {
+
+ 
+
   return (
     <div>
       <section className="all-game-cards">

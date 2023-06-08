@@ -2,19 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const orderSchema = new Schema({
-  purchaseDate: {
-    type: Date,
-    default: Date.now
+const gamesSchema = new Schema({
+  games: {
+    type: String,
+    require: true
   },
-  products: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Product'
-    }
-  ]
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Games = mongoose.model('Games', gamesSchema);
 
-module.exports = Order;
+module.exports = Games;
