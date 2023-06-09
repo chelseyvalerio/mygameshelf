@@ -3,12 +3,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const gamesSchema = new Schema({
-  games: {
+  gameId: {
     type: String,
-    require: true
+    required: true
+  },
+  
+  gameName: {
+    type: String,
+    required: true
+  },
+
+  gameImg: {
+    type: String,
+    required: true
   },
 });
 
-const Games = mongoose.model('Games', gamesSchema);
+// const Games = mongoose.model('Games', gamesSchema);
 
-module.exports = Games;
+module.exports = gamesSchema;

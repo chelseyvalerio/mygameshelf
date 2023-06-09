@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { ADD_GAME } from "../utils/mutations";
+import { selectedGame } from './GameShelf';
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,9 +59,12 @@ const SearchBar = () => {
       console.log('Selected game:', selectedGame);
       const mutationResponse = await addGame({
         variables: {
-          gameId: selectedGame.id, // Pass the necessary variables for the mutation here
-          gameName: selectedGame.name
-        },
+          gameData: {
+            gameId: selectedGame.id,
+            gameName: selectedGame.name,
+            gameImg: selectedGame.image_url
+          }
+        }
       });
       console.log('Mutation response:', mutationResponse);
       // ...

@@ -1,8 +1,9 @@
 import React, { useState} from "react";
 // import { selectedGame } from './Search';
 // import { addGame } from "./Search";
-// import { useMutation } from "@apollo/client";
-// import { ADD_GAME } from "../utils/mutations";
+import { useQuery } from "@apollo/client"
+import {QUERY_USER} from "../utils/queries"
+
 
 export default function GameShelf() {
   const [selectedGame] = useState(null);

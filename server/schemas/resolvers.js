@@ -17,10 +17,7 @@ const resolvers = {
     }, */
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
+        const user = await User.findById(context.user._id)
 
         // user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -37,19 +34,19 @@ const resolvers = {
 
       return { token, user };
     },
-    addGame: async (parent, { games }, context) => {
+    addGame: async (parent, { gameData }, context) => {
       console.log(context);
       if (context.user) {
+        console.log(gameData)
 
-        const gameData = await Games.create(games);
+        // const gameData = await Games.create(games);
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { games: gamesData._id } });
-
-        return gameData;
+        return await User.findByIdAndUpdate(context.user._id, { $push: { savedGames: gameData } },{new: true});
       }
 
       throw new AuthenticationError('Not logged in');
     },
+
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
