@@ -44,8 +44,8 @@ app.get('/login', (req, res) => {
 });
 
 // Serve the gameShelf page
-app.get('/gameshelf', (req, res) => {
-  res.sendFile(__dirname + '/gameshelf.html');
+app.get('/gameShelf', (req, res) => {
+  res.sendFile(__dirname + '/gameShelf.html');
 });
 
 // Handle the authorization callback
