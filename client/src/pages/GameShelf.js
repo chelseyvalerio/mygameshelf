@@ -1,11 +1,19 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 // import { selectedGame } from './Search';
 // import { addGame } from "./Search";
-// import { useMutation } from "@apollo/client";
-// import { ADD_GAME } from "../utils/mutations";
+import { useQuery } from "@apollo/client"
+import {QUERY_USER} from "../utils/queries"
+
 
 export default function GameShelf() {
-  const [selectedGame] = useState(null);
+  const [selectedGame, setSelectedGame] = useState(null);
+  const { loading, error, data } = useQuery(QUERY_USER);
+
+  useEffect(() => {
+    if (data && data.game) {
+      setSelectedGame(data.game);
+    }
+  }, [data]);
 
   return (
     <div>

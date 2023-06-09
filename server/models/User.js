@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Games = require('./Games');
+const gamesSchema = require('./Games');
 
 const userSchema = new Schema({
   email: {
@@ -15,10 +15,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  games: [{
-    type: Schema.Types.ObjectId, 
-    ref: "Games"
-  }]
+  // savedGames: [{
+  //   type: Schema.Types.ObjectId, 
+  //   ref: "Games"
+  // }]
+  savedGames: [gamesSchema]
 });
 
 // set up pre-save middleware to create password
