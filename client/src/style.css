@@ -27,7 +27,14 @@ h3 {
     background-color: black;
     display: inline-block;
 }
-
+footer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding: 1em 0;
+    border-top: 1px solid #999;
+}
 /*Created container for biopic to be able to align in center*/
 .bio-pic-container {
     text-align: center;

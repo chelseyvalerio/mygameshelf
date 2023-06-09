@@ -10,7 +10,7 @@ export default function Home() {
       <p>Our app provides a user-friendly interface that allows you to browse through a vast collection of board games sourced from an API. Once you find a game you love, simply add it to your personal collection for future reference. </p>
       
         <img src="https://t4.ftcdn.net/jpg/02/32/54/61/360_F_232546104_KNwtf8IENcwkK0h4HOQlo1wNISPN13aB.jpg" alt="My Game Shelf" />
-      </section>
+      </section>  
     </div>
   );
 }

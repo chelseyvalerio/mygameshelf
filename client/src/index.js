@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// Check if service workers are supported
+// Check if service workers are supported - for PWA functionality 
 if ('serviceWorker' in navigator) {
     // register workbox service worker
     const workboxSW = new Workbox('../src-sw.js');

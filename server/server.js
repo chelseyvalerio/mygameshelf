@@ -43,6 +43,11 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
+// Serve the gameShelf page
+app.get('/gameshelf', (req, res) => {
+  res.sendFile(__dirname + '/gameshelf.html');
+});
+
 // Handle the authorization callback
 app.get('/auth/callback', async (req, res) => {
   const authCode = req.query.code;
