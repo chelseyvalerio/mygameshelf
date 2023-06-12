@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# MyGameShelf - the all in one game night planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Links
 
-## Available Scripts
+1. GitHub Repository: https://github.com/chelseyvalerio/mygameshelf
+2. Heroku Deployed Application: https://peaceful-hollows-27199.herokuapp.com/
 
-In the project directory, you can run:
+#
 
-### `npm start`
+Behind every game night, there's a game night enthusiast looking to gather all their friends and family and cause healthy or not so healthy competitive drama amongst the group. We bring you the one stop shop to plan an epic game night full of laughter, jokes, and not easy to forget times with loved ones.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## User Story
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As a User, I want to have my own account where I can search various types of games and add my favorites to my dashboard (MyGameShelf)
 
-### `npm test`
+## Application Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- When a user visits the app, user is prompted to login or sign up if a new user
+- Once user is signed in, user can search games by way of category, or specific game name.
+- Search results will display any number of games that qualify under user Input parameters.
+- User can add any game(s) of their choosing to their MyGameShelf.
+- When a user returns to their MyGameShelf, they view any and all games they have saved to their dashboard.
 
-### `npm run build`
+Summary:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User can access personal MyGameShelf Dashboard and quickly search:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Category of game (eg board, digital, thinking, mystery, etc)
+- Playing time
+- Game Rating
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then user can store selected games to their personal MyGameShelf dashboard with one click
 
-### `npm run eject`
+## Technologies Used:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React
+- GraphQL with Node.js and Express.js
+- MongoDB and Mongoose ODM
+- Queries and Mutations for data retrieval and updating
+- Heroku
+- JWT Authentication - through use of BoardGameAtlas OAuth & Bcrypt
+- BoardGameAtlas API - JSON Web Token
+- Nodemon
+- Apollo-server
+- Axios
+- WebVitals
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Run Application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. npm i
+2. npm run seed
+3. npm run build
+4. npm run develop
 
-## Learn More
+#
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Preview Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The following images will provide a preview into the apps functionality and user interactivity
 
-### Code Splitting
+Home Page - Login or Sign Up Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![home page/login/signup screen](./Assets/home.png)
+![home page/login/signup screen](./Assets/login.png)
 
-### Analyzing the Bundle Size
+MyGameShelf Search Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![search page](./Assets/search.png)
 
-### Making a Progressive Web App
+MyGameShelf Search Page Results
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![search page results](./Assets/monopoly-search.png)
 
-### Advanced Configuration
+## Future Developments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Search and filter MyGameShelf by various categories such as number of players, game type, etc
+2. Delete Games from user's personal MyGameShelf
+3. Create a full game night to include food, drink, theme, etc that all game night participants can view at account owners discretion
 
-### Deployment
+#
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Collaborators:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Johnny McGown
+- Jesus Salazar
+- Katherine Reiner
+- Chelsey Valerio
